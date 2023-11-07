@@ -14,11 +14,15 @@ class MyPart implements PartInterface {
 		this.cframe = cframe;
 		this.velocity = velocity;
 		this.Player = Player;
+
+		Player.CharacterAdded.Wait();
 		const Character: CharacterInt | undefined = Player.Character;
+		print("Thing Created");
 		if (Character) {
+			task.wait(2);
 			const BodyVelocity = new Instance("LinearVelocity", Character.HumanoidRootPart);
 			BodyVelocity.VectorVelocity = velocity;
-			print("Gay Created");
+			print("t Created");
 		}
 	}
 
@@ -30,3 +34,5 @@ class MyPart implements PartInterface {
 		this.velocity = velocity;
 	}
 }
+
+export default MyPart;
